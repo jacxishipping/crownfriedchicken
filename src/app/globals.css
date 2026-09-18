@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-anton);
+  --font-bebas: var(--font-bebas);
+  --font-script: var(--font-script);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ====== Crown Fried Chicken Brand Design System ====== */
+:root {
+  /* Brand palette (overrides shadcn defaults) */
+  --black: #050505;
+  --black-soft: #0d0d0d;
+  --red: #C90012;
+  --red-bright: #E10613;
+  --dark-red: #8F000B;
+  --white: #FFFFFF;
+  --soft-white: #F4F4F4;
+  --food-gold: #F2A33A;
+  --grain: rgba(255,255,255,0.04);
+
+  /* shadcn tokens — kept for compatibility, but we force the brand */
+  --radius: 0.25rem;
+  --background: #050505;
+  --foreground: #FFFFFF;
+  --card: #0a0a0a;
+  --card-foreground: #FFFFFF;
+  --popover: #0a0a0a;
+  --popover-foreground: #FFFFFF;
+  --primary: #C90012;
+  --primary-foreground: #FFFFFF;
+  --secondary: #141414;
+  --secondary-foreground: #FFFFFF;
+  --muted: #141414;
+  --muted-foreground: #9a9a9a;
+  --accent: #1a1a1a;
+  --accent-foreground: #FFFFFF;
+  --destructive: #C90012;
+  --border: rgba(255,255,255,0.10);
+  --input: rgba(255,255,255,0.10);
+  --ring: #C90012;
+  --chart-1: #C90012;
+  --chart-2: #F2A33A;
+  --chart-3: #8F000B;
+  --chart-4: #F4F4F4;
+  --chart-5: #FFFFFF;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #C90012;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #141414;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(255,255,255,0.10);
+  --sidebar-ring: #C90012;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    outline-color: rgba(201,0,18,0.6);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    /* Force the brand background regardless of shadcn defaults */
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--red);
+    color: var(--white);
+  }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar-thumb { background: var(--dark-red); border-radius: 0; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--red); }
+}
+
+/* ====== Brand utilities ====== */
+@layer utilities {
+  .font-display { font-family: var(--font-anton), 'Arial Black', sans-serif; }
+  .font-bebas   { font-family: var(--font-bebas), 'Arial Black', sans-serif; }
+  .font-script  { font-family: var(--font-script), cursive; }
+  .font-body    { font-family: var(--font-inter), system-ui, sans-serif; }
+
+  .text-balance { text-wrap: balance; }
+
+  /* The signature red brush-stroke background */
+  .brush-red {
+    background-color: var(--red);
+    -webkit-mask-image: url("/brush-stroke.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-image: url("/brush-stroke.svg");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-position: center;
+  }
+
+  /* Alternate brush variant — wider, lower, more dramatic for big section labels */
+  .brush-red-wide {
+    background-color: var(--red);
+    -webkit-mask-image: url("/brush-stroke-wide.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-image: url("/brush-stroke-wide.svg");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-position: center;
+  }
+
+  /* Subtle film grain / noise overlay */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+  }
+
+  /* Tiny dotted leader between menu item and price */
+  .leader {
+    flex: 1;
+    overflow: hidden;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.25em;
+    user-select: none;
+    transform: translateY(-4px);
+  }
+  .leader::after {
+    content: "........................................................................................................................";
+  }
+
+  /* Outline text effect for big display headlines */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--white);
+  }
+  .text-outline-red {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--red);
+  }
+
+  /* Animated underline for nav links */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-underline:hover::after,
+  .nav-underline[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Marquee animation for the order bar */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  /* Slow drift for floating accents */
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  .animate-float-y { animation: float-y 6s ease-in-out infinite; }
+  .animate-float-y-slow { animation: float-y 9s ease-in-out infinite; }
+
+  /* Custom cursor — desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    body { cursor: none; }
+    a, button, [data-cursor="hover"] { cursor: none; }
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

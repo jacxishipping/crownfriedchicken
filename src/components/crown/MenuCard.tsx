@@ -1,0 +1,125 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { BrandButton } from "@/components/brand/BrandButton";
+import { ORDER_URL, SITE } from "@/lib/site-config";
+import type { MenuItem } from "./menu-data";
+
+interface MenuCardProps {
+  item: MenuItem;
+}
+
+export function MenuCard({ item }: MenuCardProps) {
+  return (
+    <article
+      data-cursor="hover"
+      className="group relative flex h-full flex-col border border-white/10 bg-[#0a0a0a] transition-colors duration-300 hover:border-[var(--red)]/60"
+    >
+      {/* Image */}
+      <div className="relative aspect-[5/4] overflow-hidden bg-black">
+        <img
+          src={item.image}
+          alt={`${item.name} — Crown Fried Chicken`}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.06]"
+          loading="lazy"
+        />
+        {/* Crown corner */}
+        <span className="pointer-events-none absolute right-3 top-3 z-10 inline-flex h-6 w-6 items-center justify-center bg-[var(--red)] text-white">
+          <svg viewBox="0 0 32 32" className="h-3.5 w-3.5" fill="currentColor" aria-hidden>
+            <path d="M4 18 L9 11 L13 16 L16 8 L19 16 L23 11 L28 18 L25 26 L7 26 Z" />
+          </svg>
+        </span>
+        {/* Hover overlay */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(201,0,18,0.10) 0%, transparent 40%, transparent 70%, rgba(5,5,5,0.85) 100%)",
+          }}
+        />
+        {item.startingAt && (
+          <div className="absolute bottom-3 left-3 z-10 flex items-center gap-2">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-white/70">
+              Starting at
+            </span>
+            <span className="font-display text-2xl leading-none text-white transition-transform duration-300 group-hover:scale-110 group-hover:text-[var(--red-bright)]">
+              {item.startingAt}
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-display text-2xl uppercase leading-none tracking-[0.04em] text-white">
+          {item.name}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-white/55">
+          {item.description}
+        </p>
+
+        {/* Prices */}
+        <div className="mt-5 flex-1">
+          {item.tiers && (
+            <ul className="space-y-1.5">
+              {item.tiers.map((t) => (
+                <li
+                  key={t.qty}
+                  className="flex items-baseline gap-2 text-sm text-white/75"
+                >
+                  <span className="font-display tracking-wide text-white/90">
+                    {t.qty}
+                  </span>
+                  <span className="leader" aria-hidden />
+                  <span className="font-display text-[var(--food-gold)]">
+                    {t.price}
+                  </span>
+                  {t.note && (
+                    <span className="ml-2 text-[11px] uppercase tracking-[0.18em] text-white/35">
+                      {t.note}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+          {item.single && (
+            <ul className="grid grid-cols-1 gap-x-4 gap-y-1.5 sm:grid-cols-2">
+              {item.single.map((s) => (
+                <li
+                  key={s.label}
+                  className="flex items-baseline gap-2 text-sm text-white/75"
+                >
+                  <span className="font-display tracking-wide text-white/90">
+                    {s.label}
+                  </span>
+                  <span className="leader" aria-hidden />
+                  <span className="font-display text-[var(--food-gold)]">
+                    {s.price}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* Order */}
+        <div className="mt-6 flex items-center gap-3">
+          <BrandButton href={ORDER_URL} size="sm" variant="red" arrow className="flex-1" aria-label={`Order ${item.name} on ${SITE.order.platform}`}>
+            Order
+          </BrandButton>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white/30">
+            Fresh · Hot · Now
+          </span>
+        </div>
+      </div>
+
+      {/* Bottom red underline animation */}
+      <motion.span
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[var(--red)] transition-transform duration-500 ease-out group-hover:scale-x-100"
+      />
+    </article>
+  );
+}
