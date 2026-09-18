@@ -22,11 +22,11 @@ export function QuickOrderBar() {
     >
       <div className="grid grid-cols-1 items-stretch gap-0 lg:grid-cols-[auto_1fr_auto]">
         {/* Left label */}
-        <div className="flex items-center gap-4 border-b border-white/5 px-5 py-4 lg:border-b-0 lg:border-r">
-          <span className="font-display text-3xl uppercase leading-none text-white sm:text-4xl">
+        <div className="flex items-center gap-4 border-b border-[var(--white)]/5 px-5 py-4 lg:border-b-0 lg:border-r">
+          <span className="font-display text-3xl uppercase leading-none text-[var(--white)] sm:text-4xl">
             Hungry?
           </span>
-          <span className="hidden text-xs uppercase tracking-[0.3em] text-white/50 sm:inline">
+          <span className="hidden text-xs uppercase tracking-[0.3em] text-[var(--white)]/50 sm:inline">
             Order your favorites
           </span>
         </div>
@@ -38,7 +38,7 @@ export function QuickOrderBar() {
             items={ICONS.map((i) => (
               <span
                 key={i.label}
-                className="inline-flex items-center gap-2 font-display text-lg uppercase tracking-[0.18em] text-white"
+                className="inline-flex items-center gap-2 font-display text-lg uppercase tracking-[0.18em] text-[var(--white)]"
               >
                 <span className="text-2xl" aria-hidden>
                   {i.emoji}

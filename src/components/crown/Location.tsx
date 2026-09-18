@@ -40,7 +40,7 @@ export function Location() {
   return (
     <section
       id="location"
-      className="relative overflow-hidden border-t border-white/5 bg-[var(--black)] py-20 sm:py-28"
+      className="relative overflow-hidden border-t border-[var(--white)]/5 bg-[var(--black)] py-20 sm:py-28"
       aria-labelledby="location-heading"
     >
       {/* Background subtle red glow */}
@@ -57,13 +57,13 @@ export function Location() {
         <Reveal direction="up">
           <div className="flex flex-col items-center text-center">
             <BrushStroke tilt={-1.5} padding="px-6 py-1.5">
-              <span className="font-display text-xs uppercase tracking-[0.3em] text-white">
+              <span className="font-display text-xs uppercase tracking-[0.3em] text-[var(--white)]">
                 Find the Crown
               </span>
             </BrushStroke>
             <h2
               id="location-heading"
-              className="mt-6 font-display uppercase leading-[0.9] tracking-[0.01em] text-white"
+              className="mt-6 font-display uppercase leading-[0.9] tracking-[0.01em] text-[var(--white)]"
               style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
             >
               Come Get Your Crown.
@@ -75,16 +75,16 @@ export function Location() {
         <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {INFO.map((card, i) => (
             <Reveal key={card.label} direction="up" delay={i * 0.1}>
-              <div className="group relative flex h-full flex-col items-center border border-white/10 bg-[#0a0a0a] p-8 text-center transition-colors hover:border-[var(--red)]/60">
+              <div className="group relative flex h-full flex-col items-center border border-[var(--white)]/10 bg-[var(--surface)] p-8 text-center transition-colors hover:border-[var(--red)]/60">
                 <CrownMini className="h-5 w-5 text-[var(--red)]" />
-                <span className="mt-4 text-[10px] uppercase tracking-[0.4em] text-white/40">
+                <span className="mt-4 text-[10px] uppercase tracking-[0.4em] text-[var(--white)]/40">
                   {card.label}
                 </span>
                 <div className="mt-3 space-y-1">
                   {card.value.map((line) => (
                     <p
                       key={line}
-                      className="font-display text-xl uppercase tracking-[0.05em] text-white"
+                      className="font-display text-xl uppercase tracking-[0.05em] text-[var(--white)]"
                     >
                       {line}
                     </p>
@@ -110,7 +110,7 @@ export function Location() {
 
         {/* Real Google Maps embed — works without an API key */}
         <Reveal direction="up" delay={0.1}>
-          <div className="relative aspect-[16/7] w-full overflow-hidden border border-white/10 bg-[#0a0a0a]">
+          <div className="relative aspect-[16/7] w-full overflow-hidden border border-[var(--white)]/10 bg-[var(--surface)]">
             <iframe
               src={MAP_EMBED_URL}
               title={`Map showing Crown Fried Chicken at ${FULL_ADDRESS}`}
@@ -121,9 +121,9 @@ export function Location() {
               allowFullScreen
             />
             {/* Brand pin overlay (purely decorative — the iframe already shows the real pin) */}
-            <div className="pointer-events-none absolute left-4 top-4 z-10 flex items-center gap-2 bg-black/80 px-3 py-1.5 backdrop-blur-md">
+            <div className="pointer-events-none absolute left-4 top-4 z-10 flex items-center gap-2 bg-[var(--black)]/80 px-3 py-1.5 backdrop-blur-md">
               <CrownMini className="h-4 w-4 text-[var(--red)]" />
-              <span className="text-[10px] uppercase tracking-[0.3em] text-white">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--white)]">
                 Crown · {SITE.location.addressLocality}
               </span>
             </div>
@@ -131,7 +131,7 @@ export function Location() {
               href={DIRECTIONS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 bg-[var(--red)] px-4 py-2 font-display text-xs uppercase tracking-[0.22em] text-white transition-colors hover:bg-[var(--red-bright)]"
+              className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 bg-[var(--red)] px-4 py-2 font-display text-xs uppercase tracking-[0.22em] text-[var(--white)] transition-colors hover:bg-[var(--red-bright)]"
             >
               Get Directions
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">

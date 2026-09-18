@@ -41,7 +41,7 @@ export function Hero() {
       {/* Giant outline crown watermark behind headline — slow drift */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-4 left-1/2 z-0 hidden select-none text-white/[0.04] lg:block"
+        className="pointer-events-none absolute -top-4 left-1/2 z-0 hidden select-none text-[var(--white)]/[0.04] lg:block"
         style={{
           x: "-50%",
           width: "clamp(28rem, 40vw, 56rem)",
@@ -68,7 +68,7 @@ export function Hero() {
       {/* Faint background headline outline */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-[18%] z-0 select-none text-center font-display text-[28vw] uppercase leading-none text-white/[0.03] sm:text-[22vw]"
+        className="pointer-events-none absolute inset-x-0 top-[18%] z-0 select-none text-center font-display text-[28vw] uppercase leading-none text-[var(--white)]/[0.03] sm:text-[22vw]"
       >
         Crown
       </div>
@@ -85,19 +85,19 @@ export function Hero() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="mb-6 flex items-center gap-3"
           >
-            <BrushStroke tilt={-2} variant="wide" className="text-white" padding="px-7 py-2">
+            <BrushStroke tilt={-2} variant="wide" className="text-[var(--white)]" padding="px-7 py-2">
               <span className="font-display text-[11px] uppercase tracking-[0.32em] sm:text-xs">
                 The Royal Crunch
               </span>
             </BrushStroke>
-            <span className="hidden text-xs uppercase tracking-[0.3em] text-white/40 sm:inline">
+            <span className="hidden text-xs uppercase tracking-[0.3em] text-[var(--white)]/40 sm:inline">
               Est. — / Fresh Daily
             </span>
           </motion.div>
 
           <h1
             id="hero-heading"
-            className="font-display uppercase leading-[0.85] tracking-[0.01em] text-white"
+            className="font-display uppercase leading-[0.85] tracking-[0.01em] text-[var(--white)]"
             style={{ fontSize: "clamp(3.5rem, 12vw, 9rem)" }}
           >
             <RevealLines
@@ -113,8 +113,8 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.7 }}
             className="mt-5 font-script text-3xl text-[var(--food-gold)] sm:text-4xl"
           >
-            Crispy <span className="text-white/30">·</span> Juicy{" "}
-            <span className="text-white/30">·</span>{" "}
+            Crispy <span className="text-[var(--white)]/30">·</span> Juicy{" "}
+            <span className="text-[var(--white)]/30">·</span>{" "}
             <span className="text-[var(--red)]">Royal</span>
           </motion.p>
 
@@ -122,7 +122,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.85 }}
-            className="mt-5 max-w-md text-sm leading-relaxed text-white/70 sm:text-base"
+            className="mt-5 max-w-md text-sm leading-relaxed text-[var(--white)]/70 sm:text-base"
           >
             Golden, crispy fried chicken made fresh for every craving —
             big crunch, bold flavor, royal satisfaction.
@@ -145,9 +145,9 @@ export function Hero() {
           {/* Floating CRISPY · JUICY · ROYAL micro-labels */}
           <div
             aria-hidden
-            className="mt-10 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-white/40"
+            className="mt-10 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-[var(--white)]/40"
           >
-            <span className="h-px w-8 bg-white/30" />
+            <span className="h-px w-8 bg-[var(--white)]/30" />
             {FLOAT_WORDS.map((w) => (
               <span key={w} className="inline-flex items-center gap-3">
                 {w}
@@ -171,7 +171,7 @@ export function Hero() {
             className="pointer-events-none absolute -left-4 top-1/3 z-0 hidden -translate-y-1/2 sm:block"
           >
             <BrushStroke tilt={-12} padding="px-12 py-14" bright>
-              <span className="font-display text-2xl uppercase tracking-[0.2em] text-white/0">
+              <span className="font-display text-2xl uppercase tracking-[0.2em] text-[var(--white)]/0">
                 Crunch
               </span>
             </BrushStroke>
@@ -210,12 +210,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.3 }}
-            className="absolute bottom-4 left-0 z-30 hidden items-center gap-2 border-l-2 border-[var(--red)] bg-black/70 px-4 py-2 backdrop-blur-md sm:flex"
+            className="absolute bottom-4 left-0 z-30 hidden items-center gap-2 border-l-2 border-[var(--red)] bg-[var(--black)]/70 px-4 py-2 backdrop-blur-md sm:flex"
           >
-            <span className="text-[10px] uppercase tracking-[0.3em] text-white/60">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--white)]/60">
               2 PC Combo
             </span>
-            <span className="font-display text-2xl text-white">$9.50</span>
+            <span className="font-display text-2xl text-[var(--white)]">$9.50</span>
           </motion.div>
         </div>
       </div>
@@ -223,7 +223,7 @@ export function Hero() {
       {/* Scroll cue */}
       <div
         aria-hidden
-        className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/40 lg:flex"
+        className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-[var(--white)]/40 lg:flex"
       >
         <span className="text-[10px] uppercase tracking-[0.4em]">Scroll</span>
         <span className="block h-10 w-px bg-gradient-to-b from-white/40 to-transparent" />

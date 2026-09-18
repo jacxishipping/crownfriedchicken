@@ -67,10 +67,10 @@ export const metadata: Metadata = {
     siteName: SITE.brand.name,
     images: [
       {
-        url: "/food/hero-chicken.png",
-        width: 768,
-        height: 1344,
-        alt: "Golden crispy fried chicken — Crown Fried Chicken",
+        url: "/og-share.png",
+        width: 1200,
+        height: 630,
+        alt: "Crown Fried Chicken — Crispy · Juicy · Royal",
       },
     ],
     locale: "en_US",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: "Crown Fried Chicken | Crispy · Juicy · Royal",
     description:
       "Crown Fried Chicken — crispy fried chicken, wings, seafood, tilapia, fries and more. Order your favorites today.",
-    images: ["/food/hero-chicken.png"],
+    images: ["/og-share.png"],
   },
   robots: {
     index: true,
@@ -139,10 +139,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantJsonLd) }}
         />
+        {/* Apply saved theme before paint to prevent FOUC */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('cfc_theme');if(t==='lunch'){document.documentElement.classList.add('lunch-mode');document.documentElement.style.colorScheme='light';}}catch(e){}`,
+          }}
+        />
       </head>
       <body
         className={`${anton.variable} ${bebas.variable} ${inter.variable} ${permanentMarker.variable} antialiased`}
-        style={{ background: "#050505", color: "#FFFFFF" }}
+        style={{ background: "var(--black)", color: "var(--white)" }}
       >
         {children}
         <Toaster />

@@ -48,7 +48,7 @@ export function SpecialOffer() {
         <Reveal direction="up">
           <div className="flex flex-col items-center">
             <BrushStroke tilt={-2} padding="px-7 py-2.5" variant="wide" bright>
-              <span className="font-display text-xs uppercase tracking-[0.32em] text-white">
+              <span className="font-display text-xs uppercase tracking-[0.32em] text-[var(--white)]">
                 Specials
               </span>
             </BrushStroke>
@@ -60,7 +60,7 @@ export function SpecialOffer() {
 
             <h2
               id="specials-heading"
-              className="mt-6 font-display uppercase leading-[0.85] tracking-[0.01em] text-white"
+              className="mt-6 font-display uppercase leading-[0.85] tracking-[0.01em] text-[var(--white)]"
               style={{ fontSize: "clamp(3.5rem, 14vw, 11rem)" }}
             >
               Hungry

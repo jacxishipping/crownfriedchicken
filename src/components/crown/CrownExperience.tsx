@@ -48,7 +48,7 @@ export function CrownExperience() {
           {/* Small floating label */}
           <div className="absolute left-5 top-5 z-10 flex items-center gap-2">
             <CrownIcon className="h-6 w-6 text-[var(--red)]" />
-            <span className="text-[10px] uppercase tracking-[0.4em] text-white/70">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-[var(--white)]/70">
               Crown · Signature
             </span>
           </div>
@@ -59,7 +59,7 @@ export function CrownExperience() {
           {/* Red brush stroke label */}
           <Reveal direction="up">
             <BrushStroke tilt={-2} padding="px-6 py-2">
-              <span className="font-display text-xs uppercase tracking-[0.32em] text-white">
+              <span className="font-display text-xs uppercase tracking-[0.32em] text-[var(--white)]">
                 The Crown Experience
               </span>
             </BrushStroke>
@@ -68,7 +68,7 @@ export function CrownExperience() {
           <Reveal direction="up" delay={0.05}>
             <h2
               id="experience-heading"
-              className="mt-6 font-display uppercase leading-[0.88] tracking-[0.01em] text-white"
+              className="mt-6 font-display uppercase leading-[0.88] tracking-[0.01em] text-[var(--white)]"
               style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)" }}
             >
               Crispy.
@@ -80,7 +80,7 @@ export function CrownExperience() {
           </Reveal>
 
           <Reveal direction="up" delay={0.15}>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-white/65 sm:text-base">
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-[var(--white)]/65 sm:text-base">
               From crispy chicken and hot wings to seafood, sides and ice-cold
               drinks, Crown Fried Chicken brings serious flavor to every order
               — fried fresh, served hot, built to satisfy.
@@ -98,7 +98,7 @@ export function CrownExperience() {
           {/* Decorative number */}
           <span
             aria-hidden
-            className="pointer-events-none absolute -bottom-12 right-0 select-none font-display text-[12rem] leading-none text-white/[0.03]"
+            className="pointer-events-none absolute -bottom-12 right-0 select-none font-display text-[12rem] leading-none text-[var(--white)]/[0.03]"
           >
             01
           </span>

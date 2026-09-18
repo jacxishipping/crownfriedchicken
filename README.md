@@ -107,13 +107,28 @@ export const SITE = {
 ```
 
 Updates flow automatically to:
-- Navbar (desktop + mobile drawer)
-- Hero, QuickOrderBar, all MenuCards, SpecialOffer, Footer
+- Navbar (desktop + mobile drawer) + ViewCart pill + ThemeToggle
+- Hero, QuickOrderBar, all MenuCards (auto target=_blank on external order links), SpecialOffer, Footer
 - Location cards (address / phone / hours)
 - Google Maps iframe embed
 - `tel:` and `mailto:` links
 - Restaurant JSON-LD schema (rich results)
-- OpenGraph + Twitter card metadata
+- OpenGraph + Twitter card metadata (uses `/og-share.png`)
+
+---
+
+## Cinematic Features
+
+- **Hero loader** — plays once per session: red crown draws itself via SVG stroke-dashoffset, brand name reveals line-by-line, tagline fades in, loading bar fills, then the whole overlay fades + scales up to reveal the hero. Skipped entirely when `prefers-reduced-motion` is set.
+- **Drifting hero crown** — the giant outline-crown watermark behind the headline floats on a 14s loop (subtle y-drift + micro-rotation).
+- **View Cart pill + Cart Drawer** — desktop navbar pill that pulses (red glow + scale) whenever the user hovers a menu card, driven by a Zustand store. Clicking opens a slide-in cart drawer with line items, qty steppers, subtotal/tax/total breakdown, and a "Checkout on DoorDash" CTA. Body scroll locked, Escape closes, focus trap active, backdrop click dismisses.
+- **Per-tier "Add" buttons** — each menu card's price tier has its own `+` button. Clicking adds that specific tier to the cart and opens the drawer.
+- **Today's Special banner** — red rotating promotional strip at the very top of the navbar. Cycles through 5 curated specials every 4s with a fade+slide transition. Dismissible (× button, sessionStorage-persisted).
+- **Section transitions** — major page sections (Why Crown, Crown Experience, Special Offer, Location) wrap in `<SectionTransition>` for cinematic entrance (fade + slide + subtle scale) when scrolled into view. Honors `prefers-reduced-motion`.
+- **Light/dark theme toggle** — "Lunch mode" flips the entire palette: premium black → bright white, while red accents stay the same. FOUC-preventing inline script in `layout.tsx` applies the saved theme before paint.
+- **Custom cursor** — desktop-only red ring cursor (rAF-driven, no set-state-in-effect), hidden on touch.
+- **Sticky mobile ORDER NOW bar** — slides in past the hero, hides at the Location section, respects iOS safe-area.
+- **Standalone Lottie animation** — `/public/lottie/crown-draw.json` (1.5s, 5 shape layers, 100×80 canvas) is a reusable Lottie file of the crown-drawing animation. Drop into any Lottie player (web, mobile, email) for brand-consistent motion branding.
 
 ---
 

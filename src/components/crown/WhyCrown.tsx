@@ -39,7 +39,7 @@ export function WhyCrown() {
     <section
       id="about"
       ref={ref}
-      className="relative overflow-hidden border-y border-white/5 bg-[var(--black)] py-20 sm:py-28"
+      className="relative overflow-hidden border-y border-[var(--white)]/5 bg-[var(--black)] py-20 sm:py-28"
       aria-labelledby="why-heading"
     >
       {/* Background crown watermark */}
@@ -56,13 +56,13 @@ export function WhyCrown() {
         <Reveal direction="up">
           <div className="flex flex-col items-start">
             <BrushStroke tilt={-2} padding="px-6 py-1.5" bright>
-              <span className="font-display text-xs uppercase tracking-[0.3em] text-white">
+              <span className="font-display text-xs uppercase tracking-[0.3em] text-[var(--white)]">
                 Why Crown
               </span>
             </BrushStroke>
             <h2
               id="why-heading"
-              className="mt-6 max-w-3xl font-display uppercase leading-[0.9] tracking-[0.01em] text-white"
+              className="mt-6 max-w-3xl font-display uppercase leading-[0.9] tracking-[0.01em] text-[var(--white)]"
               style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
             >
               Why Settle for Ordinary?
@@ -73,7 +73,7 @@ export function WhyCrown() {
         {/* Pillars grid with interleaved image */}
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 gap-px bg-white/5 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-px bg-[var(--white)]/5 sm:grid-cols-2">
               {PILLARS.map((p, i) => (
                 <motion.div
                   key={p.word}
@@ -83,18 +83,18 @@ export function WhyCrown() {
                   transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   className="group relative flex flex-col justify-between bg-[var(--black)] p-8"
                 >
-                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-white/30">
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-[var(--white)]/30">
                     <span>0{i + 1}</span>
-                    <span className="h-px flex-1 bg-white/10" />
+                    <span className="h-px flex-1 bg-[var(--white)]/10" />
                     <CrownMini className="h-3 w-3 text-[var(--red)]" />
                   </div>
                   <h3
-                    className="mt-6 font-display uppercase leading-none text-white transition-colors group-hover:text-[var(--red)]"
+                    className="mt-6 font-display uppercase leading-none text-[var(--white)] transition-colors group-hover:text-[var(--red)]"
                     style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
                   >
                     {p.word}
                   </h3>
-                  <p className="mt-3 text-sm text-white/55">{p.sub}</p>
+                  <p className="mt-3 text-sm text-[var(--white)]/55">{p.sub}</p>
                 </motion.div>
               ))}
             </div>
@@ -104,7 +104,7 @@ export function WhyCrown() {
           <div className="relative lg:col-span-5">
             <motion.div
               style={{ y: yImg }}
-              className="relative aspect-[3/4] w-full overflow-hidden border border-white/10"
+              className="relative aspect-[3/4] w-full overflow-hidden border border-[var(--white)]/10"
             >
               <img
                 src="/food/crispy-closeup.png"
@@ -122,7 +122,7 @@ export function WhyCrown() {
               />
               <div className="absolute bottom-5 left-5 right-5">
                 <StarDivider className="mb-3" />
-                <p className="text-center text-xs uppercase tracking-[0.3em] text-white/60">
+                <p className="text-center text-xs uppercase tracking-[0.3em] text-[var(--white)]/60">
                   Close-up of the crunch
                 </p>
               </div>
@@ -132,7 +132,7 @@ export function WhyCrown() {
 
         {/* Copy */}
         <Reveal direction="up">
-          <p className="mx-auto mt-14 max-w-2xl text-center text-base leading-relaxed text-white/70 sm:text-lg">
+          <p className="mx-auto mt-14 max-w-2xl text-center text-base leading-relaxed text-[var(--white)]/70 sm:text-lg">
             Every bite is made to deliver the crunch, flavor and satisfaction
             you expect from Crown — fried fresh the moment you order, seasoned
             with purpose, and served hot.

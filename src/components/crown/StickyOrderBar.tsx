@@ -82,7 +82,7 @@ export function StickyOrderBar() {
         {/* Crown + label */}
         <div className="flex items-center gap-2 px-4">
           <CrownMini className="h-5 w-5 text-[var(--red)]" />
-          <span className="font-display text-sm uppercase tracking-[0.18em] text-white/85">
+          <span className="font-display text-sm uppercase tracking-[0.18em] text-[var(--white)]/85">
             Crown
           </span>
         </div>

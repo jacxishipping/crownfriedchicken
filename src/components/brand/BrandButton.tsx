@@ -13,6 +13,10 @@ interface BrandButtonProps
   size?: ButtonSize;
   href?: string;
   arrow?: boolean;
+  /** When true (or when href is external), opens in a new tab. */
+  target?: string;
+  /** When target is set, defaults to "noopener noreferrer". */
+  rel?: string;
   children: React.ReactNode;
 }
 
@@ -24,11 +28,11 @@ const sizeMap: Record<ButtonSize, string> = {
 };
 
 const variantMap: Record<ButtonVariant, string> = {
-  red: "bg-[var(--red)] text-white hover:bg-[var(--red-bright)]",
+  red: "bg-[var(--red)] text-[var(--white)] hover:bg-[var(--red-bright)]",
   outline:
-    "bg-transparent text-white border border-white/60 hover:border-white hover:bg-white hover:text-black",
-  ghost: "bg-transparent text-white hover:bg-white/5",
-  gold: "bg-[var(--food-gold)] text-black hover:brightness-110",
+    "bg-transparent text-[var(--white)] border border-[var(--white)]/60 hover:border-[var(--white)] hover:bg-[var(--white)] hover:text-[var(--black)]",
+  ghost: "bg-transparent text-[var(--white)] hover:bg-[var(--white)]/5",
+  gold: "bg-[var(--food-gold)] text-[var(--black)] hover:brightness-110",
 };
 
 /**
@@ -39,7 +43,7 @@ export const BrandButton = React.forwardRef<
   HTMLButtonElement,
   BrandButtonProps
 >(function BrandButton(
-  { className, variant = "red", size = "md", href, arrow, children, ...props },
+  { className, variant = "red", size = "md", href, arrow, target, rel, children, ...props },
   ref,
 ) {
   const inner = (
@@ -71,11 +75,19 @@ export const BrandButton = React.forwardRef<
     className,
   );
 
+  // Auto-detect external links so they open in a new tab safely — keeps the
+  // menu visible (and the cart count incrementing) when users click Order.
+  const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
+  const finalTarget = target ?? (isExternal ? "_blank" : undefined);
+  const finalRel = rel ?? (finalTarget === "_blank" ? "noopener noreferrer" : undefined);
+
   if (href !== undefined) {
     return (
       <Link
         href={href}
         className={classes}
+        target={finalTarget}
+        rel={finalRel}
         // typescript: brand button props include onClick etc — forward to anchor
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
@@ -88,7 +100,7 @@ export const BrandButton = React.forwardRef<
     <button ref={ref} className={classes} {...props}>
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-white/15 transition-transform duration-500 ease-out group-hover:translate-x-0"
+        className="pointer-events-none absolute inset-0 -translate-x-full bg-[var(--white)]/15 transition-transform duration-500 ease-out group-hover:translate-x-0"
       />
       {inner}
     </button>

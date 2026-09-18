@@ -39,14 +39,14 @@ export function SignatureMenu() {
         <Reveal direction="up">
           <div className="flex flex-col items-center text-center">
             <BrushStroke tilt={-1.5} variant="wide" padding="px-7 py-2">
-              <span className="font-display text-xs uppercase tracking-[0.32em] text-white">
+              <span className="font-display text-xs uppercase tracking-[0.32em] text-[var(--white)]">
                 The Crown Favorites
               </span>
             </BrushStroke>
 
             <h2
               id="menu-heading"
-              className="mt-5 font-display uppercase leading-[0.9] tracking-[0.01em] text-white"
+              className="mt-5 font-display uppercase leading-[0.9] tracking-[0.01em] text-[var(--white)]"
               style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
             >
               Big Flavor.
@@ -56,7 +56,7 @@ export function SignatureMenu() {
 
             <StarDivider withCrowns className="mt-5" />
 
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/55 sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[var(--white)]/55 sm:text-base">
               Every item on the Crown menu is fried fresh to order. From the
               signature fried chicken to seafood platters and the sides that
               round out the table — pick your crunch.
@@ -77,7 +77,7 @@ export function SignatureMenu() {
               >
                 <span
                   className={
-                    isActive ? "text-white" : "text-white/45 hover:text-white/80"
+                    isActive ? "text-[var(--white)]" : "text-[var(--white)]/45 hover:text-[var(--white)]/80"
                   }
                 >
                   {c.label}
@@ -90,7 +90,7 @@ export function SignatureMenu() {
                   />
                 )}
                 {!isActive && (
-                  <span className="absolute inset-0 -z-10 border border-white/10" />
+                  <span className="absolute inset-0 -z-10 border border-[var(--white)]/10" />
                 )}
               </button>
             );
@@ -121,12 +121,12 @@ export function SignatureMenu() {
         {/* Footnote */}
         <Reveal direction="up" delay={0.1}>
           <div className="mt-14 flex flex-col items-center gap-4 text-center">
-            <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-white/30">
+            <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-[var(--white)]/30">
               <CrownMini className="h-3 w-3 text-[var(--red)]" />
               Crown · Fresh · Daily
               <CrownMini className="h-3 w-3 text-[var(--red)]" />
             </div>
-            <p className="max-w-md text-xs text-white/40">
+            <p className="max-w-md text-xs text-[var(--white)]/40">
               Prices shown in USD. Availability and pricing may vary by
               location — please confirm at order.
             </p>

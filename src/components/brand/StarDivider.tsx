@@ -23,15 +23,15 @@ export function StarDivider({
   return (
     <div
       className={cn(
-        "flex items-center justify-center gap-3 text-white/70",
+        "flex items-center justify-center gap-3 text-[var(--white)]/70",
         className,
       )}
       aria-hidden="true"
     >
       {withLines && (
-        <span className="h-px w-12 bg-white/30 sm:w-20" />
+        <span className="h-px w-12 bg-[var(--white)]/30 sm:w-20" />
       )}
-      {withCrowns && <CrownMini className="h-3.5 w-3.5 text-white" />}
+      {withCrowns && <CrownMini className="h-3.5 w-3.5 text-[var(--white)]" />}
       {Array.from({ length: stars }).map((_, i) => (
         <span
           key={i}
@@ -39,14 +39,14 @@ export function StarDivider({
             "text-base leading-none",
             i === Math.floor(stars / 2)
               ? "text-[var(--red)]"
-              : "text-white/80",
+              : "text-[var(--white)]/80",
           )}
         >
           ★
         </span>
       ))}
-      {withCrowns && <CrownMini className="h-3.5 w-3.5 text-white" />}
-      {withLines && <span className="h-px w-12 bg-white/30 sm:w-20" />}
+      {withCrowns && <CrownMini className="h-3.5 w-3.5 text-[var(--white)]" />}
+      {withLines && <span className="h-px w-12 bg-[var(--white)]/30 sm:w-20" />}
     </div>
   );
 }
