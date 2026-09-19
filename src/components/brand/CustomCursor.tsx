@@ -16,6 +16,7 @@ export function CustomCursor() {
   const dotRef = useRef<HTMLSpanElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const hoveringRef = useRef(false);
+  const textHoveringRef = useRef(false);
   const posRef = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
@@ -34,6 +35,9 @@ export function CustomCursor() {
       hoveringRef.current = !!t?.closest(
         'a,button,[data-cursor="hover"],[role="button"]',
       );
+
+      const isText = !!t?.closest('p, h1, h2, h3, h4, h5, h6, span:not([role="button"]):not([class*="cursor"])');
+      textHoveringRef.current = isText && !hoveringRef.current;
     };
 
     const tick = () => {
@@ -42,9 +46,29 @@ export function CustomCursor() {
       const c = containerRef.current;
       if (ring && dot && c) {
         const { x, y } = posRef.current;
-        const scale = hoveringRef.current ? 2.5 : 1;
-        ring.style.transform = `translate(${x - 14}px, ${y - 14}px) scale(${scale})`;
-        dot.style.transform = `translate(${x - 3}px, ${y - 3}px) scale(${hoveringRef.current ? 0 : 1})`;
+
+        let ringScale = 1;
+        let ringOpacity = 1;
+        let dotScaleX = 1;
+        let dotScaleY = 1;
+        let dotOpacity = 1;
+
+        if (hoveringRef.current) {
+          ringScale = 2.5;
+          dotScaleX = 0;
+          dotScaleY = 0;
+        } else if (textHoveringRef.current) {
+          ringOpacity = 0;
+          dotScaleX = 0.2;
+          dotScaleY = 3.5;
+        }
+
+        ring.style.transform = `translate(${x - 14}px, ${y - 14}px) scale(${ringScale})`;
+        ring.style.opacity = `${ringOpacity}`;
+
+        dot.style.transform = `translate(${x - 3}px, ${y - 3}px) scale(${dotScaleX}, ${dotScaleY})`;
+        dot.style.opacity = `${dotOpacity}`;
+
         c.style.opacity = "1";
       }
       rafId = requestAnimationFrame(tick);

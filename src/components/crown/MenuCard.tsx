@@ -39,7 +39,7 @@ export function MenuCard({ item }: MenuCardProps) {
   return (
     <article
       data-cursor="hover"
-      className="group relative flex h-full flex-col border border-[var(--white)]/10 bg-[var(--surface)] transition-colors duration-300 hover:border-[var(--red)]/60"
+      className="group relative flex h-full flex-col border border-[var(--white)]/10 bg-[var(--surface)] transition-all duration-300 hover:border-[var(--red)]/60 hover:-translate-y-1 hover:shadow-xl hover:shadow-[var(--red)]/20"
       onMouseEnter={() => setHovered(item.id)}
       onMouseLeave={() => setHovered(null)}
       onFocusCapture={() => setHovered(item.id)}
