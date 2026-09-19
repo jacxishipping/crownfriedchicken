@@ -3,6 +3,7 @@ import { Anton, Bebas_Neue, Inter, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { SITE, SITE_URL } from "@/lib/site-config";
+import { SmoothScroll } from "@/components/brand/SmoothScroll";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -150,6 +151,7 @@ export default function RootLayout({
         className={`${anton.variable} ${bebas.variable} ${inter.variable} ${permanentMarker.variable} antialiased`}
         style={{ background: "var(--black)", color: "var(--white)" }}
       >
+        <SmoothScroll />
         {children}
         <Toaster />
       </body>

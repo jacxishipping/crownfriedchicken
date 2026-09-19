@@ -3,6 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 
 type ButtonVariant = "red" | "outline" | "ghost" | "gold";
 type ButtonSize = "sm" | "md" | "lg" | "xl";
@@ -66,7 +68,7 @@ export const BrandButton = React.forwardRef<
 
   const classes = cn(
     "group relative inline-flex items-center justify-center overflow-hidden",
-    "transition-[transform,background-color,color] duration-300 ease-out",
+    "transition-[background-color,color] duration-300 ease-out",
     "active:translate-y-px",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--red)] focus-visible:ring-offset-2 focus-visible:ring-offset-black",
     "uppercase font-display",
@@ -74,6 +76,22 @@ export const BrandButton = React.forwardRef<
     variantMap[variant],
     className,
   );
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const { clientX, clientY } = e;
+    const { height, width, left, top } = containerRef.current.getBoundingClientRect();
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
+  };
+
+  const reset = () => {
+    setPosition({ x: 0, y: 0 });
+  };
 
   // Auto-detect external links so they open in a new tab safely — keeps the
   // menu visible (and the cart count incrementing) when users click Order.
@@ -83,26 +101,49 @@ export const BrandButton = React.forwardRef<
 
   if (href !== undefined) {
     return (
-      <Link
-        href={href}
-        className={classes}
-        target={finalTarget}
-        rel={finalRel}
-        // typescript: brand button props include onClick etc — forward to anchor
-        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      <div
+        ref={containerRef}
+        onMouseMove={handleMouse}
+        onMouseLeave={reset}
+        className="relative inline-block"
       >
-        {inner}
-      </Link>
+        <motion.div
+          animate={{ x: position.x, y: position.y }}
+          transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+        >
+          <Link
+            href={href}
+            className={classes}
+            target={finalTarget}
+            rel={finalRel}
+            {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+          >
+            {inner}
+          </Link>
+        </motion.div>
+      </div>
     );
   }
 
   return (
-    <button ref={ref} className={classes} {...props}>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-[var(--white)]/15 transition-transform duration-500 ease-out group-hover:translate-x-0"
-      />
-      {inner}
-    </button>
+    <div
+      ref={containerRef}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      className="relative inline-block"
+    >
+      <motion.div
+        animate={{ x: position.x, y: position.y }}
+        transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      >
+        <button ref={ref} className={classes} {...props}>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -translate-x-full bg-[var(--white)]/15 transition-transform duration-500 ease-out group-hover:translate-x-0"
+          />
+          {inner}
+        </button>
+      </motion.div>
+    </div>
   );
 });
