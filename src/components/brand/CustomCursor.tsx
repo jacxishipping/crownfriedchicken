@@ -42,13 +42,18 @@ export function CustomCursor() {
       const c = containerRef.current;
       if (ring && dot && c) {
         const { x, y } = posRef.current;
-        const scale = hoveringRef.current ? 1.6 : 1;
+        const scale = hoveringRef.current ? 2.5 : 1;
         ring.style.transform = `translate(${x - 14}px, ${y - 14}px) scale(${scale})`;
-        dot.style.transform = `translate(${x - 3}px, ${y - 3}px)`;
+        dot.style.transform = `translate(${x - 3}px, ${y - 3}px) scale(${hoveringRef.current ? 0 : 1})`;
         c.style.opacity = "1";
       }
       rafId = requestAnimationFrame(tick);
     };
+
+    if (ringRef.current && dotRef.current) {
+        ringRef.current.style.transition = 'transform 0.1s ease-out';
+        dotRef.current.style.transition = 'transform 0.1s ease-out';
+    }
 
     window.addEventListener("mousemove", onMove);
     rafId = requestAnimationFrame(tick);

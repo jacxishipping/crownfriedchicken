@@ -18,6 +18,7 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
   const yImg = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const scaleImg = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const yText = useTransform(scrollYProgress, [0, 1], [0, -40]);
   const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
@@ -178,7 +179,7 @@ export function Hero() {
           </div>
 
           <motion.div
-            style={{ y: reduce ? 0 : yImg }}
+            style={{ y: reduce ? 0 : yImg, scale: reduce ? 1 : scaleImg }}
             initial={{ opacity: 0, scale: 1.08, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
