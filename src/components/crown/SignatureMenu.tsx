@@ -11,7 +11,7 @@ import { CATEGORIES, itemsFor, type CategoryId } from "./menu-data";
 import { MenuCard } from "./MenuCard";
 
 export function SignatureMenu() {
-  const [active, setActive] = useState<CategoryId>("all");
+  const [active, setActive] = useState<CategoryId>("chicken");
   const items = useMemo(() => itemsFor(active), [active]);
 
   return (
