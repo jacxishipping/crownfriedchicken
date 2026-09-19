@@ -16,7 +16,6 @@ export interface MenuItem {
 }
 
 export type CategoryId =
-  | "all"
   | "chicken"
   | "wings"
   | "seafood"
@@ -25,7 +24,6 @@ export type CategoryId =
   | "drinks";
 
 export const CATEGORIES: { id: CategoryId; label: string }[] = [
-  { id: "all", label: "All" },
   { id: "chicken", label: "Chicken" },
   { id: "wings", label: "Wings" },
   { id: "seafood", label: "Seafood" },
@@ -194,6 +192,5 @@ export const MENU: MenuItem[] = [
 ];
 
 export function itemsFor(cat: CategoryId): MenuItem[] {
-  if (cat === "all") return MENU;
   return MENU.filter((m) => m.category === cat);
 }
