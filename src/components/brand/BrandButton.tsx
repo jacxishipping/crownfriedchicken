@@ -118,6 +118,10 @@ export const BrandButton = React.forwardRef<
             rel={finalRel}
             {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
           >
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -translate-x-[110%] skew-x-[15deg] bg-[var(--white)]/15 transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:skew-x-0"
+            />
             {inner}
           </Link>
         </motion.div>
@@ -139,7 +143,7 @@ export const BrandButton = React.forwardRef<
         <button ref={ref} className={classes} {...props}>
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-0 -translate-x-full bg-[var(--white)]/15 transition-transform duration-500 ease-out group-hover:translate-x-0"
+            className="pointer-events-none absolute inset-0 -translate-x-[110%] skew-x-[15deg] bg-[var(--white)]/15 transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:skew-x-0"
           />
           {inner}
         </button>
