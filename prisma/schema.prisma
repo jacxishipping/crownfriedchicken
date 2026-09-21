@@ -30,3 +30,26 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+model Order {
+  id            String      @id @default(cuid())
+  status        String      @default("PENDING") // PENDING, PAID, PREPARING, READY, DELIVERED
+  total         Float
+  stripeSession String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id])
+  menuItemId String
+  name       String
+  tierLabel  String
+  price      Float
+  qty        Int
+  image      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

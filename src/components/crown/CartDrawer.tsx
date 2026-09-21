@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { BrandButton } from "@/components/brand/BrandButton";
 import { CrownIcon } from "@/components/brand/CrownIcon";
 import {
@@ -9,10 +9,10 @@ import {
   SITE,
 } from "@/lib/site-config";
 import {
-  SALES_TAX_RATE,
   useCartInteraction,
   useCartSubtotal,
 } from "@/lib/cart-store";
+import { SALES_TAX_RATE } from "@/lib/constants";
 
 const fmt = (n: number) =>
   n.toLocaleString("en-US", { style: "currency", currency: "USD" });
@@ -43,6 +43,27 @@ export function CartDrawer() {
   const titleId = useId();
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleCheckout = async () => {
+    setIsCheckingOut(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (e) {
+      console.error(e);
+      alert("Checkout failed. Please try again.");
+    } finally {
+      setIsCheckingOut(false);
+    }
+  };
 
   // Body scroll lock + Escape key handler.
   useEffect(() => {
@@ -260,14 +281,15 @@ export function CartDrawer() {
 
                 <div className="mt-4">
                   <BrandButton
-                    href={ORDER_URL}
+                    onClick={handleCheckout}
+                    disabled={isCheckingOut}
                     size="lg"
                     variant="red"
                     arrow
                     className="w-full"
                     aria-label={`Checkout on ${SITE.order.platform}`}
                   >
-                    Checkout on {SITE.order.platform}
+                    {isCheckingOut ? "Loading..." : `Checkout on ${SITE.order.platform}`}
                   </BrandButton>
                 </div>
                 <p className="mt-3 text-center text-[10px] uppercase tracking-[0.3em] text-[var(--white)]/35">
