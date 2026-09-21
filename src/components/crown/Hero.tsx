@@ -26,7 +26,7 @@ export function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative grain min-h-[100svh] overflow-hidden bg-[var(--black)] pt-28 sm:pt-24"
+      className="relative grain min-h-[100svh] overflow-hidden bg-[var(--black)] pt-24 sm:pt-28"
       aria-labelledby="hero-heading"
     >
       {/* Background glows */}
@@ -99,7 +99,7 @@ export function Hero() {
           <h1
             id="hero-heading"
             className="font-display uppercase leading-[0.85] tracking-[0.01em] text-[var(--white)]"
-            style={{ fontSize: "clamp(3.5rem, 12vw, 9rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 10vw, 9rem)" }}
           >
             <RevealLines
               lines={["Crown", "Fried", "Chicken"]}
@@ -159,7 +159,7 @@ export function Hero() {
         </motion.div>
 
         {/* RIGHT — food */}
-        <div className="relative order-1 h-[58vh] sm:h-[68vh] lg:order-2 lg:col-span-6 lg:h-[80vh] xl:col-span-5">
+        <div className="relative order-1 min-h-[300px] h-[40vh] sm:h-[50vh] lg:order-2 lg:col-span-6 lg:h-[80vh] xl:col-span-5">
           {/* Subtle crown behind food */}
           <CrownIcon
             className="pointer-events-none absolute -top-10 right-2 z-10 h-28 w-28 text-[var(--red)]/30 sm:-top-14 sm:right-8 sm:h-40 sm:w-40"
@@ -186,7 +186,7 @@ export function Hero() {
             className="relative z-20 h-full w-full overflow-hidden"
           >
             {/* Bleeds slightly off the right edge on desktop */}
-            <div className="absolute inset-0 -right-6 lg:-right-16">
+            <div className="absolute inset-0 right-0 lg:-right-16">
               <img
                 src="/food/hero-chicken.png"
                 alt="Golden crispy fried chicken pieces — Crown Fried Chicken signature dish"
