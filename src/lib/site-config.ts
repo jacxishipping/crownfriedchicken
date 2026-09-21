@@ -21,11 +21,11 @@ export const SITE = {
   /** Online ordering — replace with your real DoorDash / Toast / Shopify URL. */
   order: {
     /** The actual URL users land on when they click ORDER NOW. */
-    url: "https://www.doordash.com/store/crown-fried-chicken-new-york",
+    url: "#menu",
     /** DoorDash is the default platform; change to "toast" | "shopify" | "custom". */
-    platform: "DoorDash",
+    platform: "Crown",
     /** Display label used in tooltips / accessibility. */
-    label: "Order on DoorDash",
+    label: "Order Online",
   },
 
   location: {

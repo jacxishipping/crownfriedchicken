@@ -106,5 +106,3 @@ export const useCartSubtotal = () =>
     s.items.reduce((sum, i) => sum + i.price * i.qty, 0),
   );
 
-/** NYC sales tax rate (8.875%) — used in the drawer's estimated total. */
-export const SALES_TAX_RATE = 0.08875;
