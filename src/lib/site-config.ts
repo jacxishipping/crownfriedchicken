@@ -30,10 +30,10 @@ export const SITE = {
 
   location: {
     /** Street address — used in footer, location cards, and SEO schema. */
-    streetAddress: "1247 Fulton Street",
-    addressLocality: "Brooklyn",
-    addressRegion: "NY",
-    postalCode: "11216",
+    streetAddress: "912 Broad Street",
+    addressLocality: "Providence",
+    addressRegion: "RI",
+    postalCode: "02907",
     addressCountry: "US",
 
     /** Pretty-printed full address (used in footer). */
@@ -42,8 +42,8 @@ export const SITE = {
     },
 
     /** Phone in E.164 for SEO; pretty version for display. */
-    phoneE164: "+17185550199",
-    phoneDisplay: "(718) 555-0199",
+    phoneE164: "+14019413100",
+    phoneDisplay: "401-941-3100",
 
     /** Hours summary used in footer + cards. */
     hoursSummary: "Mon–Sun · 10:00 AM – 2:00 AM",
@@ -59,11 +59,11 @@ export const SITE = {
      * Replace with your own embed URL from Google Maps → Share → Embed.
      */
     mapEmbedUrl:
-      "https://maps.google.com/maps?q=Crown+Fried+Chicken+1247+Fulton+St+Brooklyn+NY&output=embed",
+      "https://maps.google.com/maps?q=Crown+Fried+Chicken+912+Broad+St+Providence+RI&output=embed",
 
     /** "Get Directions" deep link — opens Google Maps turn-by-turn. */
     directionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=Crown+Fried+Chicken+1247+Fulton+St+Brooklyn+NY+11216",
+      "https://www.google.com/maps/dir/?api=1&destination=Crown+Fried+Chicken+912+Broad+St+Providence+RI+02907",
   },
 
   contact: {
