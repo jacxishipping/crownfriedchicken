@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { BrandButton } from "@/components/brand/BrandButton";
-import { CrownIcon } from "@/components/brand/CrownIcon";
 import { SITE, ORDER_URL } from "@/lib/site-config";
 import { ViewCartPill } from "./ViewCartPill";
 import { ThemeToggle } from "./ThemeToggle";
@@ -49,20 +49,13 @@ export function Navbar() {
           className="group flex items-center gap-2.5"
           aria-label="Crown Fried Chicken — home"
         >
-          <CrownIcon
-            className={cn(
-              "h-7 w-7 transition-colors",
-              scrolled ? "text-[var(--red)]" : "text-[var(--red)]",
-            )}
+          <Image
+            src="/logo.png"
+            alt="Crown Fried Chicken"
+            width={150}
+            height={50}
+            className="object-contain"
           />
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-lg uppercase tracking-[0.12em] text-[var(--white)]">
-              Crown
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.4em] text-[var(--white)]/60">
-              Fried Chicken
-            </span>
-          </span>
         </Link>
 
         {/* Desktop nav */}

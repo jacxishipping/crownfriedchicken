@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { BrandButton } from "@/components/brand/BrandButton";
-import { CrownIcon } from "@/components/brand/CrownIcon";
 import { Marquee } from "@/components/brand/Marquee";
 import { StarDivider } from "@/components/brand/StarDivider";
 import {
@@ -59,18 +59,13 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         {/* Center brand */}
         <div className="flex flex-col items-center pt-16 text-center">
-          <CrownIcon className="h-12 w-12 text-[var(--red)]" />
-          <h2
-            className="mt-4 font-display uppercase leading-[0.85] tracking-[0.02em] text-[var(--white)]"
-            style={{ fontSize: "clamp(3rem, 12vw, 9rem)" }}
-          >
-            Crown
-            <br />
-            Fried Chicken
-          </h2>
-          <p className="mt-4 font-script text-3xl text-[var(--food-gold)] sm:text-4xl">
-            Crispy · Juicy · Royal
-          </p>
+          <Image
+            src="/logo.png"
+            alt="Crown Fried Chicken"
+            width={240}
+            height={150}
+            className="object-contain"
+          />
           <StarDivider className="mt-6" withCrowns />
 
           <div className="mt-8">
